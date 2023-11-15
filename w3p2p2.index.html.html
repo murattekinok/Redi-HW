@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Product Gallery</title>
+</head>
+<body>
+    <h1>Product Gallery</h1>
+
+    <div id="buttons">
+        <button id="showAllButton">Show All</button>
+        <button id="sneakersButton">Sneakers</button>
+        <button id="bootsButton">Boots</button>
+        <button id="sandalsButton">Sandals</button>
+        <button id="sortByNameButton">Sort by Name</button>
+        <button id="sortByPriceButton">Sort by Price</button>
+    </div>
+
+    <div id="gallery">
+        <!-- Products will be displayed here -->
+        <div class="product-card">
+            <img src="images\sneakers.png.png" alt="Stylish Sneakers">
+            <h2>Stylish Sneakers</h2>
+            <p>Category: Sneakers</p>
+            <p>Price: $50</p>
+        </div>
+        <div class="product-card">
+            <img src="images/boots.png" alt="Classic Boots">
+            <h2>Classic Boots</h2>
+            <p>Category: Boots</p>
+            <p>Price: $80</p>
+        </div>
+        <div class="product-card">
+            <img src="images/sandals.jpg" alt="Casual Sandals">
+            <h2>Casual Sandals</h2>
+            <p>Category: Sandals</p>
+            <p>Price: $30</p>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { name: 'Stylish Sneakers', category: 'Sneakers', price: 50, image:"images/sneakers.png.png" },
+            { name: 'Classic Boots', category: 'Boots', price: 59.99, image:"images/boots.png" },
+            { name: 'Casual Sandals', category: 'Sandals', price: 110, image:"images/sandals.png" },
+        ];
+
+        function displayProducts(productsArray) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // Clears the existing content
+
+            productsArray.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h2>${product.name}</h2>
+                    <p>Category: ${product.category}</p>
+                    <p>Price: $${product.price}</p>
+                `;
+                gallery.appendChild(productCard);
+            });
+        }
+
+        displayProducts(products);
+
+        const showAllButton = document.getElementById('showAllButton');
+        showAllButton.addEventListener('click', () => {
+            displayProducts(products);
+        });
+
+        
+    </script>
+</body>
+</html>
